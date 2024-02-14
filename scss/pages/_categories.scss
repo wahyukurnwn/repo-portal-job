@@ -1,0 +1,174 @@
+@use "../abstracts" as *;
+
+/* Awal Styling Categories */
+.category {
+  margin-block-end: $space-2xl;
+  .section-title {
+    text-align: center;
+    font-size: $step-3;
+    font-weight: $fw-600;
+    margin-bottom: $space-m;
+  }
+
+  .img-content {
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .wrap-icon {
+    padding: $space-l;
+    margin-block-end: $space-l;
+
+    .icon-list {
+      @include list-style();
+      @include d-flex($wrap: wrap, $gap: 2em);
+      justify-content: space-evenly;
+    }
+
+    .icon-item {
+      position: relative;
+      transform: scale(0.85);
+      transition: transform 0.25s ease-in-out;
+      line-height: 1.2;
+
+      &:hover,
+      &:focus {
+        transform: scale(1);
+
+        .icon-detail {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -23px;
+        left: -26px;
+        padding: 130% 140% 0 0;
+        background-color: $primary-clr;
+        z-index: -1;
+        border-radius: 50%;
+      }
+    }
+
+    .icon-img {
+      object-fit: cover;
+      aspect-ratio: 1;
+      margin-block-end: 1em;
+    }
+
+    .icon-detail {
+      text-align: center;
+      color: $dark-clr;
+      font-weight: $fw-700;
+      opacity: 0;
+      transition: opacity 0.25s linear;
+    }
+  }
+
+  .wrap-content {
+    @include d-grid($gap: 0);
+    grid-template-areas:
+      "first"
+      "second"
+      "last";
+    overflow: hidden;
+    border-radius: 1.25em;
+
+    @include mq(medium) {
+      gap: 0.5em;
+      grid-template-areas:
+        "last last last"
+        "second second first";
+    }
+
+    @include mq(large) {
+      gap: 1.25em;
+      grid-template-areas: "first second second last";
+    }
+
+    .article {
+      position: relative;
+
+      &-title {
+        font-size: $step-3;
+        font-weight: $fw-600;
+      }
+
+      &:first-child {
+        grid-area: first;
+
+        .name-tag {
+          position: absolute;
+          bottom: 5%;
+          right: 5%;
+          line-height: 0.25;
+          border-top: 1.25em solid $secondary-clr;
+          border-radius: 1.25em;
+          padding: $space-2xs-xs;
+          background-color: $primary-clr;
+          color: $white-clr;
+        }
+
+        .name {
+          font-size: $step-1;
+          font-weight: $fw-600;
+        }
+
+        .job {
+          margin-block: 1em;
+          font-size: $step-0;
+          font-weight: $fw-500;
+        }
+      }
+
+      &:nth-child(2) {
+        padding: $space-xl;
+        background-color: $secondary-clr;
+        color: $white-clr;
+        grid-area: second;
+
+        .btn-group {
+          @include d-flex($wrap: wrap);
+
+          & > *:first-child {
+            border: 3px solid $white-clr;
+
+            &:hover {
+              background-color: $white-clr;
+              color: $custom-btn-bg-clr;
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        grid-area: last;
+        display: grid;
+        place-items: center;
+        isolation: isolate;
+
+        & > * {
+          grid-column: 1 / -1;
+          grid-row: 1/ -1;
+        }
+
+        & > .img-content {
+          z-index: -1;
+        }
+
+        .btn-article {
+          border-radius: 1.4em;
+          padding-block: $space-xs;
+          padding-inline: $space-s;
+          background-color: $custom-btn-bg-clr;
+
+          &:hover {
+            background-color: $secondary-clr;
+          }
+        }
+      }
+    }
+  }
+}

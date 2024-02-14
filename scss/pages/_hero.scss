@@ -1,0 +1,144 @@
+@use "../abstracts" as *;
+
+/* Styling Hero */
+
+.hero {
+  min-height: 100svh;
+  padding-block: $space-3xl;
+  color: $white-clr;
+  background-color: #222;
+  margin-block-end: $space-2xl;
+
+  @supports (background-blend-mode: multiply) {
+    background: url(../../images/hero-bg.jpg), radial-gradient(#444, #111);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: 50%;
+    background-position-y: 0%;
+  }
+
+  .container {
+    @include d-grid();
+    grid-template-areas:
+      "one"
+      "two";
+
+    @include mq(medium) {
+      grid-template-areas: "one two";
+    }
+  }
+
+  &-title {
+    font-size: $step-0;
+  }
+
+  &-heading {
+    font-size: $step-4;
+    font-weight: $fw-700;
+  }
+
+  &-context {
+    grid-area: one;
+
+    & > * + * {
+      margin-block-end: $space-s-m;
+    }
+
+    .btn-hero {
+      border: 3px solid $secondary-clr;
+      color: $secondary-clr;
+
+      &:hover {
+        background-color: $secondary-clr;
+        color: $white-clr;
+      }
+    }
+  }
+
+  &-form {
+    grid-area: two;
+    border-radius: 0.5em;
+    padding: $space-m;
+    background-color: $social-icon-link-bg-clr;
+
+    .form-title {
+      margin-top: $space-m;
+      font-size: $step-2;
+    }
+
+    form {
+      & > * {
+        margin-block-end: $space-s-m;
+      }
+    }
+
+    .input-group {
+      @include d-flex($gap: 0.4em);
+      background-color: $white-clr;
+      border-radius: 1.2em;
+      padding: 0.4em;
+
+      & > span {
+        color: $social-icon-link-bg-clr;
+      }
+      & > input {
+        font-size: $step--1;
+        border: none;
+        width: 95%;
+      }
+    }
+
+    .btn-form {
+      width: 100%;
+      background-color: $primary-clr;
+      &:hover {
+        background-color: $secondary-clr;
+        color: $white-clr;
+      }
+    }
+
+    .wrap-input {
+      @include d-grid();
+      grid-template-areas:
+        "one"
+        "two";
+
+      @include mq(medium) {
+        grid-template-areas: "one two";
+      }
+
+      & > *:first-child {
+        grid-area: one;
+      }
+      & > *:last-child {
+        grid-area: two;
+      }
+    }
+
+    .wrap-keyword {
+      @include d-flex($wrap: wrap, $gap: 0.35em);
+
+      .keyword-txt {
+        font-size: $step--1;
+      }
+    }
+
+    .btn-wrap {
+      @include d-flex($wrap: wrap);
+
+      .btn {
+        font-size: $step--2;
+        text-align: center;
+        border: 2px solid $white-clr;
+        background-color: transparent;
+
+        &:hover {
+          background-color: $white-clr;
+          color: $social-icon-link-bg-clr;
+        }
+      }
+    }
+  }
+}

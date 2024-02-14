@@ -1,0 +1,197 @@
+@use "../abstracts/" as *;
+
+/* Styling Recent */
+
+.recent {
+  margin-block-end: $space-2xl;
+
+  .section-title {
+    font-size: $step-3;
+    font-weight: $fw-600;
+  }
+
+  .recent-txt {
+    color: $p-clr;
+    max-width: 30em;
+  }
+
+  .highlight {
+    font-weight: $fw-700;
+  }
+
+  .wrap-container {
+    @include d-grid();
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six";
+
+    @include mq(medium) {
+      grid-template-areas:
+        "one two"
+        "three four"
+        "five six";
+    }
+
+    @include mq(large) {
+      grid-template-areas:
+        "one two three"
+        "four five six";
+    }
+  }
+
+  .card {
+    overflow: hidden;
+    border-radius: 0.5em;
+    border: 3px solid lightgray;
+  }
+
+  .card-heading {
+    font-size: $step-1;
+    font-weight: $fw-600;
+  }
+
+  .card:first-child {
+    grid-area: one;
+  }
+  .card:nth-child(2) {
+    grid-area: two;
+  }
+  .card:nth-child(3) {
+    grid-area: three;
+  }
+  .card:nth-child(4) {
+    grid-area: four;
+  }
+  .card:nth-child(5) {
+    grid-area: five;
+  }
+  .card:last-child {
+    grid-area: six;
+  }
+
+  .hero-card {
+    grid-area: last;
+    display: grid;
+    place-items: end start;
+    isolation: isolate;
+
+    & > * {
+      grid-column: 1 / -1;
+      //   grid-row: 1/ -1;
+      grid-row: 1/ -1;
+    }
+
+    & > .img-card {
+      z-index: -1;
+    }
+  }
+
+  .card-desc {
+    padding: $space-s;
+
+    i.bi {
+      cursor: pointer;
+      color: $primary-clr;
+    }
+  }
+
+  .img-card,
+  .img-logo {
+    object-fit: cover;
+  }
+
+  .img-logo {
+    border-radius: 50%;
+    padding: $space-xs;
+    background-color: $white-clr;
+  }
+
+  .first-row,
+  .second-row,
+  .third-row,
+  .company,
+  .bookmark {
+    @include d-flex();
+  }
+
+  .company {
+    gap: 0.5em;
+  }
+  .bookmark {
+    gap: 0.25em;
+  }
+
+  .first-row {
+    color: $p-clr;
+    // border: 3px solid navy;
+    justify-content: space-between;
+
+    i.bi:hover {
+      color: $custom-btn-bg-clr;
+    }
+  }
+
+  .third-row {
+    color: $p-clr;
+    justify-content: space-between;
+  }
+
+  .second-row {
+    color: $p-clr;
+  }
+
+  // .company > *,
+  // .bookmark > * {
+  //   border: 3px solid lime;
+  // }
+
+  .img-logo {
+    min-width: 60px;
+    flex-basis: 3%;
+  }
+
+  .btn-group {
+    & > *:first-child {
+      display: inline-block;
+      background-color: $primary-clr;
+      color: $white-clr;
+      font-size: $step--1;
+      border-radius: 1.7em;
+      padding-block: 0.4em;
+
+      &:hover {
+        background-color: $custom-btn-bg-clr;
+      }
+    }
+
+    & > *:last-child {
+      display: inline-block;
+      background-color: $section-bg-clr;
+      color: $primary-clr;
+      font-size: $step--1;
+      border-radius: 1.7em;
+      border: 2px solid $p-clr;
+      padding-block: 0.4em;
+
+      &:hover {
+        color: $white-clr;
+        background-color: $custom-btn-bg-clr;
+      }
+    }
+  }
+
+  .btn.card {
+    border: none;
+    border-radius: 1.25em;
+    background-color: $custom-btn-bg-clr;
+
+    &:hover {
+      background-color: $secondary-clr;
+      color: $white-clr;
+    }
+  }
+}

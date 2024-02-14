@@ -1,0 +1,126 @@
+@use "../abstracts/" as *;
+
+/* Styling Featured */
+.featured {
+  margin-block-end: $space-2xl;
+  .section-title {
+    font-size: $step-3;
+    font-weight: $fw-600;
+    text-align: center;
+    margin-bottom: $space-m;
+  }
+
+  .desc-txt {
+    text-align: center;
+    .highlight {
+      font-weight: $fw-800;
+      color: $p-clr;
+      font-style: normal;
+    }
+  }
+
+  &-article {
+    @include d-flex();
+    justify-content: space-between;
+    padding: $space-m;
+    background-color: $section-bg-clr;
+    margin-bottom: $space-m;
+    overflow: hidden;
+    border-radius: 0.5em;
+
+    span {
+      color: $p-clr;
+    }
+
+    i.bi {
+      color: $primary-clr;
+    }
+  }
+
+  &-img {
+    align-self: start;
+    flex-basis: 5%;
+    min-width: 60px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background-color: $white-clr;
+    padding: $space-xs;
+    border-radius: 50%;
+  }
+
+  &-info {
+    flex-basis: 92%;
+  }
+
+  &-job__title {
+    font-size: $step-2;
+    font-weight: $fw-600;
+    margin-bottom: $space-3xs;
+  }
+
+  &-job__description {
+    @include d-flex($wrap: wrap);
+    justify-content: space-between;
+
+    & > *:nth-child(1) {
+      flex-basis: 18%;
+      min-width: 170px;
+    }
+    & > *:nth-child(2) {
+      flex-basis: 18%;
+      min-width: 170px;
+    }
+    & > *:nth-child(3) {
+      flex-basis: 18%;
+      min-width: 170px;
+    }
+    & > *:nth-child(4) {
+      flex-basis: 18%;
+      min-width: 190px;
+    }
+
+    .btn-group {
+      @include d-flex($gap: 0.24em);
+
+      @include mq(medium) {
+        justify-content: space-evenly;
+      }
+
+      & > *:first-child {
+        background-color: $primary-clr;
+        color: $white-clr;
+        font-size: $step--1;
+        border-radius: 1.7em;
+
+        &:hover,
+        &:active {
+          background-color: $custom-btn-bg-clr;
+        }
+      }
+
+      & > *:last-child {
+        background-color: $section-bg-clr;
+        color: $primary-clr;
+        font-size: $step--1;
+        border-radius: 1.7em;
+        border: 2px solid $p-clr;
+
+        &:hover,
+        &:active {
+          color: $white-clr;
+          background-color: $custom-btn-bg-clr;
+        }
+      }
+    }
+  }
+
+  &-btn {
+    background-color: $custom-btn-bg-clr;
+    color: $white-clr;
+
+    &:hover,
+    &:active {
+      background-color: $secondary-clr;
+    }
+  }
+}

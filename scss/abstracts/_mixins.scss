@@ -1,0 +1,40 @@
+@use "sass:map";
+
+$breakpoints: (
+  small: 35em,
+  medium: 48em,
+  large: 62em,
+);
+
+@mixin mq($key) {
+  $size: map.get($breakpoints, $key);
+
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin list-style() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@mixin d-flex($wrap: nowrap, $direction: row, $gap: 1em) {
+  display: flex;
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+  // justify-content: $space;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin d-grid($columns: 1fr, $gap: 1em) {
+  display: grid;
+  grid-auto-columns: $columns;
+  gap: $gap;
+}

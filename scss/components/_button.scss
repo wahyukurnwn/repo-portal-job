@@ -1,0 +1,14 @@
+@use "../abstracts/" as *;
+
+.btn {
+  display: inlineblock;
+  background-color: var(--bg-btn, transparent);
+  color: var(--clr-btn, $white-clr);
+  text-decoration: none;
+  padding-inline: 1em;
+  padding-block: 0.2em;
+  border-radius: 1em;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
