@@ -593,33 +593,39 @@ textarea {
 }
 
 /* Styling Recent */
-.recent {
-  margin-block-end: clamp(4.5rem, 4.3261rem + 0.8696vi, 5rem);
-}
-.recent .section-title {
+.section-title {
   font-size: clamp(1.944rem, 1.5904rem + 1.7682vi, 2.9607rem);
   font-weight: 600;
 }
-.recent .recent-txt {
+
+.highlight {
+  font-weight: 700;
+}
+
+hr {
+  opacity: 0.24;
+}
+
+.recent {
+  margin-block-end: clamp(4.5rem, 4.3261rem + 0.8696vi, 5rem);
+}
+.recent-txt {
   color: #717275;
   max-width: 30em;
 }
-.recent .highlight {
-  font-weight: 700;
-}
-.recent .wrap-container {
+.recent .d-grid {
   display: grid;
   grid-auto-columns: 1fr;
   gap: 1em;
   grid-template-areas: "one" "two" "three" "four" "five" "six";
 }
 @media (min-width: 48em) {
-  .recent .wrap-container {
+  .recent .d-grid {
     grid-template-areas: "one two" "three four" "five six";
   }
 }
 @media (min-width: 62em) {
-  .recent .wrap-container {
+  .recent .d-grid {
     grid-template-areas: "one two three" "four five six";
   }
 }
@@ -650,17 +656,19 @@ textarea {
 .recent .card:last-child {
   grid-area: six;
 }
-.recent .hero-card {
+.recent .card-hero {
   grid-area: last;
   display: grid;
   place-items: end start;
   isolation: isolate;
 }
-.recent .hero-card > * {
+.recent .card-hero > * {
   grid-column: 1/-1;
   grid-row: 1/-1;
 }
-.recent .hero-card > .img-card {
+.recent .card-img {
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: -1;
 }
 .recent .card-desc {
@@ -670,15 +678,24 @@ textarea {
   cursor: pointer;
   color: #5d52ba;
 }
-.recent .img-card,
+.recent .card-btn {
+  border: none;
+  border-radius: 1.25em;
+  background-color: #f65129;
+}
+.recent .card-btn:hover {
+  background-color: #00ccef;
+  color: #ffffff;
+}
 .recent .img-logo {
   -o-object-fit: cover;
      object-fit: cover;
-}
-.recent .img-logo {
-  border-radius: 50%;
-  padding: clamp(0.875rem, 0.8533rem + 0.1087vi, 0.9375rem);
+  min-width: 60px;
+  flex-basis: 3%;
   background-color: #ffffff;
+  padding: clamp(0.875rem, 0.8533rem + 0.1087vi, 0.9375rem);
+  border-radius: 50%;
+  border: 0.5px solid #717275;
 }
 .recent .first-row,
 .recent .second-row,
@@ -704,47 +721,142 @@ textarea {
 .recent .first-row i.bi:hover {
   color: #f65129;
 }
+.recent .second-row {
+  color: #717275;
+}
 .recent .third-row {
   color: #717275;
   justify-content: space-between;
 }
-.recent .second-row {
-  color: #717275;
-}
-.recent .img-logo {
-  min-width: 60px;
-  flex-basis: 3%;
-}
-.recent .btn-group > *:first-child {
+.recent .btn-group > *:first-child, .recent .btn-group > *:last-child {
   display: inline-block;
-  background-color: #5d52ba;
-  color: #ffffff;
   font-size: clamp(0.9375rem, 0.9374rem + 0.0004vi, 0.9377rem);
   border-radius: 1.7em;
   padding-block: 0.4em;
+}
+.recent .btn-group > *:first-child {
+  background-color: #5d52ba;
+  color: #ffffff;
 }
 .recent .btn-group > *:first-child:hover {
   background-color: #f65129;
 }
 .recent .btn-group > *:last-child {
-  display: inline-block;
   background-color: #f0f8ff;
   color: #5d52ba;
-  font-size: clamp(0.9375rem, 0.9374rem + 0.0004vi, 0.9377rem);
-  border-radius: 1.7em;
-  border: 2px solid #717275;
-  padding-block: 0.4em;
 }
 .recent .btn-group > *:last-child:hover {
   color: #ffffff;
   background-color: #f65129;
 }
-.recent .btn.card {
-  border: none;
-  border-radius: 1.25em;
-  background-color: #f65129;
+
+/* Stying testimoni */
+.testimoni {
+  background-color: hsl(210, 46%, 95%);
+  margin-block-end: clamp(4.5rem, 4.3261rem + 0.8696vi, 5rem);
+  padding: clamp(4.5rem, 4.3261rem + 0.8696vi, 5rem);
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
 }
-.recent .btn.card:hover {
-  background-color: #00ccef;
-  color: #ffffff;
+.testimoni-card__title {
+  margin-top: 0.5em;
+  font-size: clamp(1.125rem, 1.0815rem + 0.2174vi, 1.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+.testimoni-quote {
+  font-size: clamp(0.9375rem, 0.9374rem + 0.0004vi, 0.9377rem);
+  opacity: 0.7;
+}
+.testimoni .d-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  place-items: start;
+}
+.testimoni .d-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: 1em;
+  grid-template-areas: "one" "two" "three" "four" "five";
+}
+@media screen and (min-width: 33em) {
+  .testimoni .d-grid {
+    grid-template-areas: "one  one" "two  three" "five five" "four four";
+  }
+}
+@media screen and (min-width: 38em) {
+  .testimoni .d-grid {
+    grid-template-areas: "one one " "two  five" "three  five" "four  four";
+  }
+}
+@media (min-width: 48em) {
+  .testimoni .d-grid {
+    grid-template-areas: "one one one one" "two two four four" "three three four four" "five five five five";
+  }
+}
+@media screen and (min-width: 54em) {
+  .testimoni .d-grid .testimonial-grid {
+    grid-template-areas: "one one two" "five five five" "three four four";
+  }
+}
+@media (min-width: 62em) {
+  .testimoni .d-grid {
+    grid-template-areas: "one one two five" "three four four five";
+  }
+}
+.testimoni-card {
+  font-size: clamp(1.125rem, 1.0815rem + 0.2174vi, 1.25rem);
+  border-radius: 0.5em;
+  padding: clamp(1.6875rem, 1.6223rem + 0.3261vi, 1.875rem);
+  box-shadow: 1.5rem 2rem 1rem -1.2rem hsl(217, 19%, 35%);
+}
+.testimoni-card:first-child {
+  grid-area: one;
+  background-color: hsl(263, 55%, 52%);
+  color: hsl(0, 0%, 100%);
+  background-image: url(../../img-testi/bg-pattern-quotation.svg);
+  background-repeat: no-repeat;
+  background-position: top right 10%;
+}
+.testimoni-card:nth-child(2) {
+  grid-area: two;
+  background-color: hsl(217, 19%, 35%);
+  color: hsl(0, 0%, 100%);
+}
+.testimoni-card:nth-child(3) {
+  grid-area: three;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(217, 19%, 35%);
+}
+.testimoni-card:nth-child(4) {
+  grid-area: four;
+  background-color: hsl(219, 29%, 14%);
+  color: hsl(0, 0%, 100%);
+}
+.testimoni-card:last-child {
+  grid-area: five;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(217, 19%, 35%);
+}
+.testimoni-img {
+  width: 2rem;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+.testimoni .consument > * {
+  margin-block: 0.2em;
+}
+.testimoni .consument .name {
+  font-size: clamp(0.9375rem, 0.9374rem + 0.0004vi, 0.9377rem);
+  font-weight: 500;
+  line-height: 1;
+}
+.testimoni .consument .job {
+  font-size: 0.6em;
+  font-weight: 500;
+  opacity: 0.5;
+  line-height: 1;
 }/*# sourceMappingURL=main.css.map */
