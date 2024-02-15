@@ -1,0 +1,135 @@
+@use "../abstracts/" as *;
+
+/* Stying testimoni */
+.testimoni {
+  background-color: hsl($clr-neutral-200);
+  margin-block-end: $space-2xl;
+  padding: $space-2xl;
+  font-family: $ff-secondary;
+  font-weight: 400;
+
+  &-card__title {
+    margin-top: 0.5em;
+    font-size: $step-0;
+    font-weight: $fw-500;
+    line-height: 1.2;
+  }
+
+  &-quote {
+    font-size: $step--1;
+    opacity: 0.7;
+  }
+
+  .d-flex {
+    @include d-flex();
+    place-items: start;
+  }
+
+  .d-grid {
+    @include d-grid();
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four"
+      "five";
+
+    @media screen and (min-width: 33em) {
+      grid-template-areas:
+        "one  one"
+        "two  three"
+        "five five"
+        "four four";
+    }
+    @media screen and (min-width: 38em) {
+      grid-template-areas:
+        "one one "
+        "two  five"
+        "three  five"
+        "four  four";
+    }
+
+    @include mq(medium) {
+      grid-template-areas:
+        "one one one one"
+        "two two four four"
+        "three three four four"
+        "five five five five";
+    }
+
+    @media screen and (min-width: 54em) {
+      .testimonial-grid {
+        grid-template-areas:
+          "one one two"
+          "five five five"
+          "three four four";
+      }
+    }
+
+    @include mq(large) {
+      grid-template-areas:
+        "one one two five"
+        "three four four five";
+    }
+  }
+
+  &-card {
+    font-size: $step-0;
+    border-radius: 0.5em;
+    padding: $space-m;
+    box-shadow: 1.5rem 2rem 1rem -1.2rem hsl($clr-secondary-400);
+  }
+
+  &-card:first-child {
+    grid-area: one;
+    background-color: hsl($clr-primary-400);
+    color: hsl($clr-neutral-100);
+    background-image: url(../../img-testi/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: top right 10%;
+  }
+  &-card:nth-child(2) {
+    grid-area: two;
+    background-color: hsl($clr-secondary-400);
+    color: hsl($clr-neutral-100);
+  }
+  &-card:nth-child(3) {
+    grid-area: three;
+    background-color: hsl($clr-neutral-100);
+    color: hsl($clr-secondary-400);
+  }
+  &-card:nth-child(4) {
+    grid-area: four;
+    background-color: hsl($clr-secondary-500);
+    color: hsl($clr-neutral-100);
+  }
+  &-card:last-child {
+    grid-area: five;
+    background-color: hsl($clr-neutral-100);
+    color: hsl($clr-secondary-400);
+  }
+
+  &-img {
+    width: 2rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  .consument {
+    & > * {
+      margin-block: 0.2em;
+    }
+    .name {
+      font-size: $step--1;
+      font-weight: $fw-500;
+      line-height: 1;
+    }
+
+    .job {
+      font-size: 0.6em;
+      font-weight: $fw-500;
+      opacity: 0.5;
+      line-height: 1;
+    }
+  }
+}
